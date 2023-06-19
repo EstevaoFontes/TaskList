@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(49, 49, 49);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.titulo{
+    color: white;
+    left: 15px;
+    position: absolute;
+    background-color: transparent;
+}
+
+.barraNavegaçao{
+    height: 8;
+    border-bottom: 2px solid white;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.textoNovaTarefa{
+    border: none;
+    background-color: rgb(87, 87, 87);
+    width: 400px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.textoNovaTarefa::placeholder{
+    color: white;
+}
+
+
+.adicionarTarefa{
+    background-color: white;
+    color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.adicionarTarefa:hover{
+    cursor: pointer;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    border: 1px solid white;
+}
+
+.adicionarTarefa:active{
+    transform: translateY(1px);
+}
+
+.main{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.tarefas{
+    margin: 10px;
+    padding: 2rem;
+    border: 1px solid white;
+    min-width: 170px;
+    min-height: 200px;
+    display: inline;
+    color: white;
+    position: relative;
+    border-radius: 10px;
+}
+
+.tarefaEdicao{
+    margin: 10px;
+    padding: 2rem;
+    border: 1px solid black;
+    min-width: 180px;
+    min-height: 200px;
+    display: inline;
+    color: black;
+    position: relative;
+    border-radius: 10px;
+}
+
+.tarefas textarea{
+    left: 6px;
+    top: 5px;
+    background-color: transparent;
+    border: none;
+    width: 220px;
+    height: 210px;   
+    flex-wrap: wrap;
+    position: absolute;
+    resize: none;
+    outline: none;
+    padding: 1px;
+}
+
+.botao_excluir_tarefa{
+    width: 20px;
+    height: 20px;
+    border:none;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.botao_editar_tarefa{
+    width: 20px;
+    height: 20px;
+    border:none;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.imagem_editar, .imagem_excluir {
+    width: 20px;
+    height: 20px;  
+    border-radius: 3px; 
+}
+
+.imagem_excluir:hover{
+    cursor: pointer;
+    background-color: rgb(122, 122, 122);
+}
+
+.imagem_editar:hover{
+    cursor: pointer;
+    background-color: rgb(122, 122, 122);
+}
+
+.imagem_excluir:active{
+    transform: translateY(1px);
+}
+
+.imagem_editar:active{
+    transform: translateY(1px);
+}
+
+#liveEdition{
+    background-color: white;
+}
