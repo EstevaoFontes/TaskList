@@ -1,8 +1,12 @@
 *{
     padding: 0;
     margin: 0;
-    background-color: rgb(49, 49, 49);
     font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+body{
+    background-color: rgb(49, 49, 49);
     color: white;
 }
 
@@ -29,6 +33,7 @@
     height: 20px;
     padding: 5px;
     border-radius: 5px;
+    color: white;
 }
 
 .textoNovaTarefa::placeholder{
@@ -69,24 +74,23 @@
     margin: 10px;
     padding: 2rem;
     border: 1px solid white;
-    min-width: 170px;
+    min-width: 165px;
     min-height: 200px;
     display: inline;
     color: white;
     position: relative;
     border-radius: 10px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: show 0.5s ease-in-out forwards;
 }
 
-.tarefaEdicao{
-    margin: 10px;
-    padding: 2rem;
-    border: 1px solid black;
-    min-width: 180px;
-    min-height: 200px;
-    display: inline;
-    color: black;
-    position: relative;
-    border-radius: 10px;
+@keyframes show{
+    to{
+        opacity: 1;
+        transform: translateX(0);
+
+    }
 }
 
 .tarefas textarea{
@@ -101,6 +105,7 @@
     resize: none;
     outline: none;
     padding: 1px;
+    color: white;
 }
 
 .botao_excluir_tarefa{
@@ -110,28 +115,10 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-}
-.botao_editar_tarefa{
-    width: 20px;
-    height: 20px;
-    border:none;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-}
-
-.imagem_editar, .imagem_excluir {
-    width: 20px;
-    height: 20px;  
-    border-radius: 3px; 
+    background-color: transparent;
 }
 
 .imagem_excluir:hover{
-    cursor: pointer;
-    background-color: rgb(122, 122, 122);
-}
-
-.imagem_editar:hover{
     cursor: pointer;
     background-color: rgb(122, 122, 122);
 }
@@ -140,10 +127,71 @@
     transform: translateY(1px);
 }
 
+.botao_editar_tarefa{
+    width: 20px;
+    height: 20px;
+    border:none;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background-color: transparent;
+}
+
+.imagem_editar, .imagem_excluir {
+    width: 20px;
+    height: 20px;  
+    border-radius: 3px; 
+}
+
+
+
+.imagem_editar:hover{
+    cursor: pointer;
+    background-color: rgb(122, 122, 122);
+}
+
+
+
 .imagem_editar:active{
     transform: translateY(1px);
 }
 
-#liveEdition{
-    background-color: white;
+.modoLight{
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    right: 50px;
+    position: absolute;
+    background-color: transparent;
+}
+
+#modoImg{
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+}
+
+.modoLight:active{
+    transform: translateY(1px);
+}
+
+#modoImg.animarsol{
+    animation: lightOn 0.5s ease forwards ;
+}
+
+    #modoImg.animarlua{
+        animation: lightOff 0.5s ease forwards ;
+    }
+
+@keyframes lightOn {
+    to{
+        transform:rotate3d(0,0,1, 180deg);
+    }
+}
+
+@keyframes lightOff {
+    to{
+        transform:rotate3d(0,0,1, 360deg);
+    }
 }

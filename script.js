@@ -1,30 +1,69 @@
-let allTask = [];
+let modoAtual = "lua"
+
+const lightMode = document.querySelector(".modoLight")
 
 const newTaskText = document.querySelector(".textoNovaTarefa");
 
-let buttonNewTask = document.querySelector(".adicionarTarefa").addEventListener("click", newTask);
+const newTaskButton = document.querySelector(".adicionarTarefa");
 
 const main = document.querySelector(".main")
+
+const imageToChange = document.getElementById("modoImg")
+
+const titulo = document.querySelector(".titulo")
+
+let buttonNewTask = document.querySelector(".textoNovaTarefa").addEventListener("keydown", (e) =>{
+    if (e.key === "Enter"){
+        newTaskButton.click()
+    }
+});
+
+newTaskButton.addEventListener("click", newTask)
+
+lightMode.addEventListener("click", () =>{
+        if (modoAtual == "lua"){
+            modoAtual = "sol"
+            lightOn()
+        }else{
+            modoAtual = "lua"
+            lightOff()
+        }
+    })
+
+
+function lightOn(){
+    imageToChange.src = `imagens/${modoAtual}.png`
+    imageToChange.classList.add(`animar${modoAtual}`)    
+}
+
+function lightOff(){
+    imageToChange.classList.add(`animar${modoAtual}`)
+    imageToChange.src = `imagens/${modoAtual}.png`
+}
+
 
 function randonId(){
     return Math.floor(Math.random() * 5000)
 }
 
 function newTask(){
+    const allTask = getNotes();
+
     const task = {
         texto: newTaskText.value,
         id: randonId(),
     };
 
-    constructor(task.texto, task.id)
-    newTaskText.value = ""
-
-    // console.log(allTask)
-
+    constructor(task.texto, task.id);
+    
+    newTaskText.value = "";
+    
     allTask.push(task)
-
-    saveNotes(allTask)
+    
+    saveNotes(allTask);
+    
 };
+
 
 function constructor(inputText, id){
 
@@ -72,13 +111,20 @@ function constructor(inputText, id){
 };
 
 function saveNotes(listTask){
-    const save_notes = localStorage.setItem('task',JSON.stringify(listTask))
+    localStorage.setItem("task",JSON.stringify(listTask))
 };
 
 function getNotes(){
-    const get_notes = JSON.parse(localStorage.getItem('task'))
-    return get_notes
+    const notes = JSON.parse(localStorage.getItem("task") || "[]")
+    return notes
 };
+
+function showNotes (){
+    getNotes().forEach(notes => {
+        const showNotes = constructor(notes.texto, notes.id)
+        return showNotes
+    });
+}
 
 
 function notesTrash(e){
@@ -92,12 +138,6 @@ function notesTrash(e){
     elementToTrash.remove();
 
     saveNotes(findTaskToTrash);
-
-    for (let i=0; i<allTask.length; i++){
-        if (allTask[i].id == idNote){
-            allTask.splice(i,1)
-        };
-    }
 };
 
 let listasParaEdicao = []
@@ -129,12 +169,13 @@ function habilitarEdicao(e){
     areaTexto.removeAttribute("disabled");
     imagemEditar.setAttribute("src","imagens/confirmação.png");
     container.style.border = "1px solid green";
-}
+}    
 
 
 
 function desabilitarEdicao(e){
-   
+    const notes = getNotes();
+    console.log(notes)
     let idNote = e.currentTarget.id;
 
     const container = document.getElementById(idNote);
@@ -145,13 +186,17 @@ function desabilitarEdicao(e){
     imagemEditar.setAttribute("src","imagens/editar.png");
     container.style.border = "1px solid white";
 
-    for (let i=0; i<allTask.length; i++){
-        if (allTask[i].id == idNote){
-           allTask[i].texto = areaTexto.value
-           saveNotes(allTask)
+    for (let i=0; i<notes.length; i++){
+        if (notes[i].id == idNote){
+           notes[i].texto = areaTexto.value
+           saveNotes(notes)
         }
     }
-    console.log(allTask)
 }
 
-localStorage.clear()
+//INICIALIZAÇÃO
+showNotes ()
+
+
+
+
