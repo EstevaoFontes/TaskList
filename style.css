@@ -1,47 +1,50 @@
-*{
+* {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 
-body{
+body {
     background-color: rgb(49, 49, 49);
     color: white;
 }
 
-.titulo{
+h2 {
     color: white;
     left: 15px;
     position: absolute;
     background-color: transparent;
 }
 
-.barraNavegaçao{
-    height: 8;
-    border-bottom: 2px solid white;
+.barraNavegaçao {
+    height: 8%;
     padding: 1rem;
     justify-content: center;
     align-items: center;
     display: flex;
+    position: relative;
+    background-color: black;
 }
 
-.textoNovaTarefa{
+.barraNavegaçao input {
     border: none;
     background-color: rgb(87, 87, 87);
-    width: 400px;
-    height: 20px;
+    width: 420px;
+    height: 35px;
     padding: 5px;
     border-radius: 5px;
     color: white;
 }
 
-.textoNovaTarefa::placeholder{
+
+.textoNovaTarefa::placeholder {
     color: white;
 }
 
 
-.adicionarTarefa{
+.adicionarTarefa {
     background-color: white;
     color: black;
     width: 30px;
@@ -52,31 +55,29 @@ body{
     margin-left: 5px;
 }
 
-.adicionarTarefa:hover{
+.adicionarTarefa:hover {
     cursor: pointer;
     background-color: rgb(49, 49, 49);
     color: white;
     border: 1px solid white;
 }
 
-.adicionarTarefa:active{
+.adicionarTarefa:active {
     transform: translateY(1px);
 }
 
-.main{
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+.main {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
 }
 
-.tarefas{
+.main div {
     margin: 10px;
-    padding: 2rem;
     border: 1px solid white;
-    min-width: 165px;
+    min-width: 200px;
+    max-width: 300px;
     min-height: 200px;
-    display: inline;
     color: white;
     position: relative;
     border-radius: 10px;
@@ -85,21 +86,21 @@ body{
     animation: show 0.5s ease-in-out forwards;
 }
 
-@keyframes show{
-    to{
+@keyframes show {
+    to {
         opacity: 1;
         transform: translateX(0);
 
     }
 }
 
-.tarefas textarea{
+.main textarea {
     left: 6px;
     top: 5px;
     background-color: transparent;
     border: none;
     width: 220px;
-    height: 210px;   
+    height: 210px;
     flex-wrap: wrap;
     position: absolute;
     resize: none;
@@ -108,55 +109,56 @@ body{
     color: white;
 }
 
-.botao_excluir_tarefa{
+.botao_excluir_tarefa {
     width: 20px;
     height: 20px;
-    border:none;
+    border: none;
     position: absolute;
     right: 10px;
     bottom: 10px;
     background-color: transparent;
 }
 
-.imagem_excluir:hover{
+.imagem_excluir:hover {
     cursor: pointer;
     background-color: rgb(122, 122, 122);
 }
 
-.imagem_excluir:active{
+.imagem_excluir:active {
     transform: translateY(1px);
 }
 
-.botao_editar_tarefa{
+.botao_editar_tarefa {
     width: 20px;
     height: 20px;
-    border:none;
+    border: none;
     position: absolute;
     left: 10px;
     bottom: 10px;
     background-color: transparent;
 }
 
-.imagem_editar, .imagem_excluir {
+.imagem_editar,
+.imagem_excluir {
     width: 20px;
-    height: 20px;  
-    border-radius: 3px; 
+    height: 20px;
+    border-radius: 3px;
 }
 
 
 
-.imagem_editar:hover{
+.imagem_editar:hover {
     cursor: pointer;
     background-color: rgb(122, 122, 122);
 }
 
 
 
-.imagem_editar:active{
+.imagem_editar:active {
     transform: translateY(1px);
 }
 
-.modoLight{
+.modoLight {
     border: none;
     cursor: pointer;
     width: 30px;
@@ -164,34 +166,111 @@ body{
     right: 50px;
     position: absolute;
     background-color: transparent;
+    
 }
 
-#modoImg{
+#modoImg {
     height: 30px;
     width: 30px;
     background-color: transparent;
 }
 
-.modoLight:active{
+.modoLight:active {
     transform: translateY(1px);
 }
 
-#modoImg.animarsol{
-    animation: lightOn 0.5s ease forwards ;
+.modoLight:hover {
+    animation: lightAnimated 1s ease forwards;
 }
 
-    #modoImg.animarlua{
-        animation: lightOff 0.5s ease forwards ;
-    }
-
-@keyframes lightOn {
-    to{
-        transform:rotate3d(0,0,1, 180deg);
+@keyframes lightAnimated {
+    to {
+        transform: rotate(360deg);
     }
 }
 
-@keyframes lightOff {
-    to{
-        transform:rotate3d(0,0,1, 360deg);
+
+@media (max-width: 1285.60px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
     }
+}
+
+@media (max-width: 884px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+    }
+}
+
+@media (max-width: 656px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 811.20px) {
+    h2 {
+        width: 10px;
+        justify-content: center;
+    }
+}
+
+.modal {
+    width: 400px;
+    height: 30vh;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    }
+
+.modal p {
+    font-size: 15px;
+}
+
+.modal input {
+    border: none;
+    background-color: black;
+    width: 250px;
+    height: 20px;
+    font-weight: bold;
+    color: white;  
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal input::placeholder{
+    color: white;
+}
+
+.modal button{
+    padding: 5px 5px;
+    width: 130px;
+    background-color: rgb(245, 241, 12);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;   
+}
+
+.modal button:active{
+    transform: translateY(1px);
+}
+
+.modal button:hover{
+    background-color: rgb(255, 255, 0);
 }

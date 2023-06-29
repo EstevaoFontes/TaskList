@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <title>Lista de Tarefas</title>
     <meta charset="UTF-8">
@@ -10,14 +9,21 @@
 <body>
     <header class="cabeçalho">
         <nav class="barraNavegaçao">
-            <h2 class="titulo">Minhas Tarefas</h2>
+            <h2 class="titulo">Olá...</h2>
             <input maxlength="372" class="textoNovaTarefa" type="text" placeholder="Insira sua nova tarefa">
             <button class="adicionarTarefa">+</button>
             <button class="modoLight"><img id="modoImg" src="imagens/lua.png"></button>
         </nav>
     </header>
-    <main class="main">
+    <main class="main" >
     </main>
+    <dialog class="modal">
+        <h3>Olá Usuário</h3>
+        <p>Percebi que você é novo aqui</p>
+        <p>Como gostaria de ser chamado ?</p>
+        <input class="inputModal" type="text" maxlength="15" placeholder="Digite seu nome">
+        <button class="buttonModal">confirmar</button>
+    </dialog >
     <script src="script.js"></script>
 </body>
 </html>
