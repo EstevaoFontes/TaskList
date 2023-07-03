@@ -6,41 +6,59 @@
 
 }
 
+html,
 body {
     background-color: rgb(49, 49, 49);
-    color: white;
+    color: #ffffff;
+    transition: 0.3s;
+    width: 100%;
+    height: 100%;
 }
 
-h2 {
-    color: white;
-    left: 15px;
-    position: absolute;
-    background-color: transparent;
-}
 
-.barraNavegaçao {
-    height: 8%;
-    padding: 1rem;
+header {
+    width: 100%;
+    height: 70px;
     justify-content: center;
     align-items: center;
     display: flex;
+    box-shadow: 0.5px 0.5px 10px 0.5px black;
     position: relative;
-    background-color: black;
 }
 
-.barraNavegaçao input {
+.navigator {
+    width: 100%;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-shadow: 0.5px 0.5px 10px 0.5px black;
+    position: fixed;
+    z-index: 999;
+}
+
+.titulo {
+    left: 8px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.textoNovaTarefa {
     border: none;
     background-color: rgb(87, 87, 87);
     width: 420px;
     height: 35px;
     padding: 5px;
     border-radius: 5px;
-    color: white;
+    color: #ffffff;
+    margin-left: 45px;
 }
 
 
 .textoNovaTarefa::placeholder {
-    color: white;
+    color: #ffffff;
 }
 
 
@@ -57,9 +75,9 @@ h2 {
 
 .adicionarTarefa:hover {
     cursor: pointer;
-    background-color: rgb(49, 49, 49);
-    color: white;
-    border: 1px solid white;
+    background-color: #313131;
+    color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 .adicionarTarefa:active {
@@ -68,18 +86,17 @@ h2 {
 
 .main {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    width: 100%;
+    grid-gap: 1px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
+    width: 99%;
 }
 
 .main div {
     margin: 10px;
-    border: 1px solid white;
-    min-width: 200px;
-    max-width: 300px;
-    min-height: 200px;
-    color: white;
-    position: relative;
+    border: 2px solid #ffffff;
+    width: 14.5rem;
+    height: 8rem;
+    /* position: relative; */
     border-radius: 10px;
     opacity: 0;
     transform: translateX(-20px);
@@ -99,15 +116,16 @@ h2 {
     top: 5px;
     background-color: transparent;
     border: none;
-    width: 220px;
-    height: 210px;
+    width: 13.8rem;
+    height: 5.5rem;
     flex-wrap: wrap;
     position: absolute;
     resize: none;
     outline: none;
     padding: 1px;
-    color: white;
+    color: #ffffff;
 }
+
 
 .botao_excluir_tarefa {
     width: 20px;
@@ -119,12 +137,12 @@ h2 {
     background-color: transparent;
 }
 
-.imagem_excluir:hover {
+#imagem_excluir:hover {
     cursor: pointer;
-    background-color: rgb(122, 122, 122);
+    color: #ff0000;
 }
 
-.imagem_excluir:active {
+#imagem_excluir:active {
     transform: translateY(1px);
 }
 
@@ -138,48 +156,50 @@ h2 {
     background-color: transparent;
 }
 
-.imagem_editar,
-.imagem_excluir {
-    width: 20px;
-    height: 20px;
-    border-radius: 3px;
+#imagem_editar {
+    color: #ffffff;
+}
+
+#imagem_excluir {
+    color: #ffffff;
 }
 
 
-
-.imagem_editar:hover {
+#imagem_editar:hover {
     cursor: pointer;
-    background-color: rgb(122, 122, 122);
+    color: green;
 }
 
 
 
-.imagem_editar:active {
+#imagem_editar:active {
     transform: translateY(1px);
 }
 
-.modoLight {
-    border: none;
+.label {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
     right: 50px;
     position: absolute;
-    background-color: transparent;
-    
 }
 
-#modoImg {
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
+.label .fa-moon,
+.fa-sun {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #ffff00;
 }
 
-.modoLight:active {
-    transform: translateY(1px);
+.label .fa-sun {
+    display: none;
 }
 
-.modoLight:hover {
+.lightMode {
+    display: none;
+}
+
+.label:hover {
     animation: lightAnimated 1s ease forwards;
 }
 
@@ -189,88 +209,238 @@ h2 {
     }
 }
 
-
-@media (max-width: 1285.60px) {
-    .main {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        width: 100%;
-    }
-}
-
-@media (max-width: 884px) {
-    .main {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-    }
-}
-
-@media (max-width: 656px) {
-    .main {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        width: 100%;
-    }
-}
-
-
-@media (max-width: 811.20px) {
-    h2 {
-        width: 10px;
-        justify-content: center;
-    }
-}
-
-.modal {
-    width: 400px;
-    height: 30vh;
-    border: 1px solid black;
+.modalOpen {
+    width: 30rem;
+    height: 14rem;
+    border: 2px solid #ffffff;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     margin-top: 50px;
-    z-index: 999;
     display: none;
     flex-direction: column;
     border-radius: 10px;
-    }
+}
 
-.modal p {
+.modalOpen span {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.modalOpen p {
     font-size: 15px;
 }
 
-.modal input {
-    border: none;
-    background-color: black;
+.modalOpen input {
+    border: 1px solid #ffffff;
     width: 250px;
     height: 20px;
-    font-weight: bold;
-    color: white;  
-    margin-top: 10px;
-    text-align: center;
+    color: #000000;
+    margin-top: 20px;
+    padding: 1rem;
+    font: 1rem;
 }
 
-.modal input::placeholder{
-    color: white;
+.modalOpen input::placeholder {
+    color: #000000;
 }
 
-.modal button{
+.modalOpen button {
     padding: 5px 5px;
-    width: 130px;
-    background-color: rgb(245, 241, 12);
-    color: black;
+    width: 10rem;
+    background-color: #f5f10c;
+    color: #000000;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     margin-top: 10px;
-    font-weight: bold;   
+    font-weight: bold;
 }
 
-.modal button:active{
+.modalOpen button:active {
     transform: translateY(1px);
 }
 
-.modal button:hover{
-    background-color: rgb(255, 255, 0);
+.modalOpen button:hover {
+    background-color: #ffff00;
+}
+
+/* LIGHT MODE */
+
+.light {
+    background-color: #c1c0c0;
+    color: #000000;
+}
+
+.light header {
+    background-color: #bbbaba;
+    color: #000000;
+}
+
+.light body {
+    background-color: #c1c0c0;
+}
+
+.light .main {
+    background-color: #c1c0c0;
+}
+
+.light .textoNovaTarefa {
+    background-color: #a4a2a2;
+    color: #000000;
+}
+
+.light .textoNovaTarefa::placeholder {
+    color: #000000;
+}
+
+.light .adicionarTarefa {
+    background-color: #5959df;
+    color: #ffffff;
+}
+
+.light .main div {
+    border: 2px solid #000000;
+    color: #000000;
+}
+
+.light .main textarea {
+    color: #000000;
+}
+
+.light #imagem_editar {
+    color: #000000;
+}
+
+.light #imagem_excluir {
+    color: #000000;
+}
+
+.light .fa-moon {
+    display: none;
+}
+
+.light .fa-sun {
+    display: flex;
+}
+
+.light #imagem_editar:hover {
+
+    color: #008000;
+}
+
+.light #imagem_excluir:hover {
+    color: #ff0000;
+}
+
+.light .modalOpen{
+    border: 2px solid #000;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 776px) {
+    .titulo {
+        font-size: 20px;
+    }
+
+    .textoNovaTarefa {
+        width: 380px;
+        height: 30px;
+    }
+
+    .adicionarTarefa {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 718px) {
+    .titulo {
+        font-size: 20px;
+    }
+
+    .textoNovaTarefa {
+        width: 320px;
+        height: 30px;
+    }
+
+    .adicionarTarefa {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 532px) {
+
+    .titulo {
+        font-size: 14px;
+        left: 8px;
+    }
+
+    .textoNovaTarefa {
+        width: 190px;
+        height: 25px;
+        margin-left: 45px;
+    }
+
+    .adicionarTarefa {
+        width: 20px;
+        height: 20px;
+        font-size: 15px;
+    }
+
+    .label {
+        cursor: pointer;
+        right: 20px;
+        position: absolute;
+    }
+
+    .label .fa-moon,
+    .fa-sun {
+        font-size: 20px;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+    }
+
+    .main div {
+        width: 9.8rem;
+        height: 12rem;
+    }
+
+    .main textarea {
+        width: 9rem;
+        height: 12rem;
+    }
+}
+
+@media (max-width: 490px){
+    .modalOpen {
+        width: 20rem;
+        height: 12rem;
+    }
+
+    .modalOpen span {
+        font-size: 1.5rem;
+    }
+
+    .modalOpen p {
+        font-size: 0.8rem;
+    }
+
+    .modalOpen input {
+        margin-top: 15px;
+    }
+
+    .modalOpen button {
+        margin-top: 20px;
+    }
 }

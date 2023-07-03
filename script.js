@@ -1,6 +1,5 @@
-let modoAtual = "lua"
 
-const lightMode = document.querySelector(".modoLight")
+const lightMode = document.querySelector(".lightMode")
 
 const newTaskText = document.querySelector(".textoNovaTarefa");
 
@@ -8,9 +7,13 @@ const newTaskButton = document.querySelector(".adicionarTarefa");
 
 const main = document.querySelector(".main")
 
-const imageToChange = document.getElementById("modoImg")
-
 const titulo = document.querySelector(".titulo")
+
+const modalElement = document.querySelector(".modalOpen");
+
+const inputModal = document.querySelector(".inputModal");
+
+const buttonModal = document.querySelector(".buttonModal");
 
 
 
@@ -30,60 +33,47 @@ function getModal() {
 };
 
 function modal() {
-    const modal = document.querySelector(".modal");
-    const inputModal = document.querySelector(".inputModal");
-    const buttonModal = document.querySelector(".buttonModal");
 
     const modalSeted = getModal();
-    console.log(modalSeted)
 
     if (modalSeted === null) {
-        modal.style.display = "flex";
+        modalElement.style.display = "flex";
+        disableElements()
+        buttonModal.addEventListener("click", () => {
+            titulo.innerText = `Olá ${inputModal.value}`
+            saveModal(inputModal.value)
+            enableElements()
+
+        })
+    } else {
+        titulo.innerText = `Olá ${modalSeted}`
+    }
+
+    function enableElements() {
+        newTaskText.style.cursor = "pointer";
+        newTaskText.removeAttribute("disabled", "");
+        newTaskButton.style.cursor = "pointer";
+        newTaskButton.removeAttribute("disabled", "");
+        modalElement.style.display = "none";
+    };
+
+    function disableElements() {
         newTaskText.style.cursor = "not-allowed"
         newTaskText.setAttribute("disabled", "")
         newTaskButton.style.cursor = "not-allowed"
         newTaskButton.setAttribute("disabled", "")
-
-        buttonModal.addEventListener("click", () => {
-            titulo.innerText = `Olá ${inputModal.value}`
-            saveModal(inputModal.value)
-            newTaskText.style.cursor = "pointer";
-            newTaskText.removeAttribute("disabled", "");
-            newTaskButton.style.cursor = "pointer";
-            newTaskButton.removeAttribute("disabled", "");
-            modal.style.display = "none";
-        })
-    } else {
-        modal.style.display = "none";
-        titulo.innerText = `Olá ${modalSeted}`
-    }
-}
+    };
+};
 
 newTaskButton.addEventListener("click", newTask)
 
 lightMode.addEventListener("click", () => {
-    if (modoAtual == "lua") {
-        modoAtual = "sol"
-        lightOn()
-    } else {
-        modoAtual = "lua"
-        lightOff()
-    }
-})
 
-
-function lightOn() {
-    imageToChange.src = `imagens/${modoAtual}.png`
-}
-
-function lightOff() {
-    imageToChange.src = `imagens/${modoAtual}.png`
-}
-
+});
 
 function randonId() {
     return Math.floor(Math.random() * 5000)
-}
+};
 
 function newTask() {
     const allTask = getNotes();
@@ -111,7 +101,7 @@ function constructor(inputText, id) {
 
     const areaTexto = document.createElement("textarea");
     areaTexto.setAttribute("disabled", "");
-    areaTexto.setAttribute("maxlength", "377");
+    areaTexto.setAttribute("maxlength", "145");
     areaTexto.value = inputText;
     container.appendChild(areaTexto);
 
@@ -120,9 +110,9 @@ function constructor(inputText, id) {
     botaoExcluir.setAttribute('id', id);
     container.appendChild(botaoExcluir);
 
-    const imagemExcluir = document.createElement("img");
-    imagemExcluir.setAttribute("src", "imagens/excluir.png");
-    imagemExcluir.classList.add("imagem_excluir");
+    const imagemExcluir = document.createElement("i");
+    imagemExcluir.setAttribute("class", "fas fa-trash");
+    imagemExcluir.setAttribute("id","imagem_excluir");
     botaoExcluir.appendChild(imagemExcluir);
 
     const botaoEditar = document.createElement("button");
@@ -130,9 +120,9 @@ function constructor(inputText, id) {
     botaoEditar.setAttribute('id', id);
     container.appendChild(botaoEditar);
 
-    const imagemEditar = document.createElement("img");
-    imagemEditar.setAttribute("src", "imagens/editar.png");
-    imagemEditar.classList.add("imagem_editar");
+    const imagemEditar = document.createElement("i");
+    imagemEditar.setAttribute("id", "imagem_editar");
+    imagemEditar.setAttribute("class", "fas fa-edit");
     botaoEditar.appendChild(imagemEditar);
 
     const buttonTrash = container.querySelector(".botao_excluir_tarefa").addEventListener("click", (e) => {
@@ -204,15 +194,15 @@ function habilitarEdicao(e) {
     const imagemEditar = container.children[2].children[0];
 
     areaTexto.removeAttribute("disabled");
-    imagemEditar.setAttribute("src", "imagens/confirmação.png");
-    container.style.border = "1px solid green";
+    imagemEditar.setAttribute("class", "fas fa-check");
+    container.style.border = "2px solid yellow";
 }
 
 
 
 function desabilitarEdicao(e) {
     const notes = getNotes();
-    console.log(notes)
+    
     let idNote = e.currentTarget.id;
 
     const container = document.getElementById(idNote);
@@ -220,20 +210,44 @@ function desabilitarEdicao(e) {
     const imagemEditar = container.children[2].children[0];
 
     areaTexto.setAttribute("disabled", "");
-    imagemEditar.setAttribute("src", "imagens/editar.png");
-    container.style.border = "1px solid white";
+    imagemEditar.setAttribute("class", "fas fa-edit");
+    container.style.border = "2px solid";
 
     for (let i = 0; i < notes.length; i++) {
         if (notes[i].id == idNote) {
-            notes[i].texto = areaTexto.value
-            saveNotes(notes)
-        }
+            notes[i].texto = areaTexto.value;
+            saveNotes(notes);
+        };
+    };
+};
+
+function changeTheme(){
+    document.body.classList.toggle("light")
+};
+
+const theme = document.querySelector(".lightMode").addEventListener("change",() =>{
+    changeTheme();
+
+    localStorage.removeItem("light");
+
+    if (document.body.classList.contains("light")){
+        localStorage.setItem("light", 1)
+    }
+});
+
+function loadTheme(){
+    const theme = localStorage.getItem("light")
+
+    if(theme){
+        changeTheme()
     }
 }
 
 //INICIALIZAÇÃO
 showNotes()
 modal()
+loadTheme()
+
 
 
 

@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>Lista de Tarefas</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <header class="cabeçalho">
-        <nav class="barraNavegaçao">
+    <header>
+        <div class="navigator">
             <h2 class="titulo">Olá...</h2>
-            <input maxlength="372" class="textoNovaTarefa" type="text" placeholder="Insira sua nova tarefa">
+            <input maxlength="145" class="textoNovaTarefa" type="text" placeholder="Insira sua nova tarefa">
             <button class="adicionarTarefa">+</button>
-            <button class="modoLight"><img id="modoImg" src="imagens/lua.png"></button>
-        </nav>
+            <input type="checkbox" class="lightMode" id="change-theme">
+            <label class="label" for="change-theme">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </label>
+        </div>
     </header>
-    <main class="main" >
-    </main>
-    <dialog class="modal">
-        <h3>Olá Usuário</h3>
+    <main class="main"></main>
+    <div class="modalOpen">
+        <span>Olá Usuário</span>
         <p>Percebi que você é novo aqui</p>
         <p>Como gostaria de ser chamado ?</p>
-        <input class="inputModal" type="text" maxlength="15" placeholder="Digite seu nome">
+        <input class="inputModal" type="text" maxlength="9" placeholder="Digite seu nome">
         <button class="buttonModal">confirmar</button>
-    </dialog >
+    </div>
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/ef10e392b2.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
