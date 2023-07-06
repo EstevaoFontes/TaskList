@@ -56,7 +56,6 @@ header {
     margin-left: 45px;
 }
 
-
 .textoNovaTarefa::placeholder {
     color: #ffffff;
 }
@@ -85,19 +84,20 @@ header {
 }
 
 .main {
-    display: grid;
-    grid-gap: 1px 20px;
-    grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr));
-    width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;    
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .main div {
     margin: 10px;
     border: 2px solid #ffffff;
-    width: 14.5rem;
+    width: 15.3%;
     height: 8rem;
-    /* position: relative; */
     border-radius: 10px;
+
     opacity: 0;
     transform: translateX(-20px);
     animation: show 0.5s ease-in-out forwards;
@@ -112,13 +112,11 @@ header {
 }
 
 .main textarea {
-    left: 6px;
-    top: 5px;
+    margin: 6px;
     background-color: transparent;
     border: none;
-    width: 13.8rem;
+    width: 95%;
     height: 5.5rem;
-    flex-wrap: wrap;
     position: absolute;
     resize: none;
     outline: none;
@@ -340,87 +338,7 @@ header {
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 776px) {
-    .titulo {
-        font-size: 20px;
-    }
 
-    .textoNovaTarefa {
-        width: 380px;
-        height: 30px;
-    }
-
-    .adicionarTarefa {
-        width: 25px;
-        height: 25px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 718px) {
-    .titulo {
-        font-size: 20px;
-    }
-
-    .textoNovaTarefa {
-        width: 320px;
-        height: 30px;
-    }
-
-    .adicionarTarefa {
-        width: 25px;
-        height: 25px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 532px) {
-
-    .titulo {
-        font-size: 14px;
-        left: 8px;
-    }
-
-    .textoNovaTarefa {
-        width: 190px;
-        height: 25px;
-        margin-left: 45px;
-    }
-
-    .adicionarTarefa {
-        width: 20px;
-        height: 20px;
-        font-size: 15px;
-    }
-
-    .label {
-        cursor: pointer;
-        right: 20px;
-        position: absolute;
-    }
-
-    .label .fa-moon,
-    .fa-sun {
-        font-size: 20px;
-    }
-
-    .main {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-
-    }
-
-    .main div {
-        width: 9.8rem;
-        height: 12rem;
-    }
-
-    .main textarea {
-        width: 9rem;
-        height: 12rem;
-    }
-}
 
 @media (max-width: 490px){
     .modalOpen {
