@@ -84,20 +84,20 @@ header {
 }
 
 .main {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    justify-content: start;
     align-items: center;    
-    justify-content: flex-start;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit,minmax(15%, 2fr));
+    width: 99%;
 }
 
 .main div {
+    width: 15%;
     margin: 10px;
     border: 2px solid #ffffff;
-    width: 15.3%;
+    width: 14.5rem;
     height: 8rem;
     border-radius: 10px;
-
     opacity: 0;
     transform: translateX(-20px);
     animation: show 0.5s ease-in-out forwards;
@@ -112,11 +112,13 @@ header {
 }
 
 .main textarea {
-    margin: 6px;
+    left: 6px;
+    top: 5px;
     background-color: transparent;
     border: none;
-    width: 95%;
+    width: 13.8rem;
     height: 5.5rem;
+    flex-wrap: wrap;
     position: absolute;
     resize: none;
     outline: none;
@@ -338,6 +340,86 @@ header {
 
 /* RESPONSIVIDADE */
 
+/* @media (max-width: 776px) {
+    .titulo {
+        font-size: 20px;
+    }
+
+    .textoNovaTarefa {
+        width: 380px;
+        height: 30px;
+    }
+
+    .adicionarTarefa {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 718px) {
+    .titulo {
+        font-size: 20px;
+    }
+
+    .textoNovaTarefa {
+        width: 320px;
+        height: 30px;
+    }
+
+    .adicionarTarefa {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .titulo {
+        font-size: 18px;
+        left: 8px;
+    }
+
+    .textoNovaTarefa {
+        width: 300px;
+        height: 30px;
+        right: 40px;
+    }
+
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+    }
+
+    .main div {
+        width: 8rem;
+        height: 13rem;
+    }
+
+    .main textarea {
+        width: 7.5rem;
+        height: 12rem;
+    }
+}
+
+@media (max-width: 528px) {
+
+    .titulo {
+        font-size: 15px;
+        left: 8px;
+    }
+
+    .textoNovaTarefa {
+        width: 250px;
+    }
+
+    .fa-moon{
+        font-size: 10px;
+    }
+} */
 
 
 @media (max-width: 490px){
